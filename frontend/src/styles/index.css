@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-accent/40 text-ink;
+  }
+
+  /* Restrained scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink/15 rounded-sm;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink/25;
+  }
+
+  /* Focus states */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ink/30;
+  }
+}
+
+@layer components {
+  /* Editorial heading — serif italic for emphasis */
+  .heading-editorial {
+    @apply font-serif italic;
+  }
+
+  /* Technical micro-label */
+  .label-tech {
+    @apply font-mono text-2xs uppercase tracking-[0.12em] text-muted;
+  }
+
+  /* Monospace data value */
+  .mono-data {
+    @apply font-mono tabular-nums;
+  }
+
+  /* Thin rule separator */
+  .rule {
+    @apply border-t border-ink/10;
+  }
+
+  /* Card with editorial border — no shadow, no rounded corners */
+  .card-editorial {
+    @apply border border-ink/10 bg-cream;
+  }
+
+  /* Status dot */
+  .dot-online {
+    @apply w-1.5 h-1.5 rounded-full bg-accent;
+  }
+
+  .dot-offline {
+    @apply w-1.5 h-1.5 rounded-full bg-ink/20;
+  }
+
+  .dot-error {
+    @apply w-1.5 h-1.5 rounded-full bg-error;
+  }
+
+  /* Pill button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+      px-6 py-2.5
+      bg-ink text-cream
+      font-mono text-xs uppercase tracking-[0.1em]
+      border border-ink
+      transition-all duration-200
+      hover:bg-ink/90
+      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink/30;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+      px-6 py-2.5
+      bg-transparent text-ink
+      font-mono text-xs uppercase tracking-[0.1em]
+      border border-ink/20
+      transition-all duration-200
+      hover:border-ink/40 hover:bg-ink/5
+      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink/30;
+  }
+
+  /* Input field */
+  .input-field {
+    @apply w-full px-3 py-2
+      bg-cream-dark/50 text-ink
+      font-mono text-sm
+      border border-ink/10
+      placeholder:text-muted/60
+      focus:border-ink/30 focus:outline-none
+      transition-colors duration-200;
+  }
+
+  /* Textarea */
+  .textarea-field {
+    @apply w-full px-4 py-3
+      bg-cream-dark/30 text-ink
+      font-sans text-sm leading-relaxed
+      border border-ink/10
+      placeholder:text-muted/50
+      focus:border-ink/30 focus:outline-none
+      transition-colors duration-200
+      resize-none;
+  }
+}
+
+@layer utilities {
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+}
