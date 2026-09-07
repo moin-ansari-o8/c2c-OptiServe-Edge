@@ -1,0 +1,32 @@
+Edge Computing and Model Inference
+
+Edge computing refers to the practice of processing data near the source of data generation rather than relying on a centralised cloud infrastructure. This approach reduces latency and bandwidth usage, which is critical for real-time applications.
+
+Model Serving at the Edge:
+Deploying machine learning models on edge devices presents unique challenges:
+- Limited computational resources (CPU, GPU, memory)
+- Power consumption constraints
+- Need for low-latency inference
+- Model size limitations
+
+Optimisation Techniques:
+Several techniques can optimise model inference at the edge:
+1. Quantisation: Reducing model precision from FP32 to INT8 or INT4
+2. Knowledge Distillation: Training smaller models to mimic larger ones
+3. Pruning: Removing redundant weights from the model
+4. Speculative Decoding: Using a smaller draft model to speed up generation
+
+Speculative Decoding:
+Speculative decoding is a technique where a smaller, faster "draft" model generates candidate tokens, which are then verified by the larger "target" model in parallel. This can significantly reduce inference latency without sacrificing output quality.
+
+The process works as follows:
+1. The draft model generates K candidate tokens
+2. The target model verifies all K tokens in a single forward pass
+3. Accepted tokens are kept; rejected tokens trigger regeneration
+4. This parallel verification is much faster than sequential generation
+
+Continuous Batching:
+Continuous batching (also known as iteration-level scheduling) allows the inference engine to dynamically add and remove requests from the batch at each iteration. This improves GPU utilisation and throughput compared to static batching.
+
+vLLM Engine:
+vLLM is an efficient inference engine that implements PagedAttention for managing KV cache memory. It supports continuous batching and achieves high throughput for serving large language models.
